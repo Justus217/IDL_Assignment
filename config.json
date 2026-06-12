@@ -1,0 +1,10 @@
+{
+    "MODEL": "VGGBlock",
+    "DATA": "placeholder",
+    "DATA_PATH": "./data/",
+    "BATCH_SIZE": 32,
+    "CHANNELS": 10,
+    "NUM_CLASSES": 18,
+    "LEARNING_RATE": 0.001,
+    "EPOCHS": 100
+}
