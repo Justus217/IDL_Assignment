@@ -1,6 +1,6 @@
 {
     "MODEL": "VGGBlock",
-    "DATA": "placeholder",
+    "DATA": "cells",
     "DATA_PATH": "./data/",
     "BATCH_SIZE": 32,
     "CHANNELS": 10,
