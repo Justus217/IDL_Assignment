@@ -18,7 +18,6 @@ class Trainer:
         correct, sum = 0, 0
         
         for images, labels in dataloader:
-            print("LOOP")
             images, labels = images.to(self.device), labels.to(self.device)
             
             labels = labels.squeeze()
@@ -36,7 +35,6 @@ class Trainer:
         return running_loss / sum, (correct / sum) * 100
 
     def evaluate(self, dataloader):
-        print("EVAL")
         self.model.eval()
         running_loss = 0.0
         correct, total = 0, 0
@@ -45,6 +43,7 @@ class Trainer:
             for images, labels in dataloader:
                 images, labels = images.to(self.device), labels.to(self.device)
                 
+                labels = labels.squeeze()
                 outputs = self.model(images)
                 loss = self.criterion(outputs, labels)
                 
