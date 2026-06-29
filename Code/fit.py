@@ -33,8 +33,8 @@ class Trainer:
             _, predicted = outputs.max(1)
             total_sum += labels.size(0)
             correct += predicted.eq(labels).sum().item()
-            
-        return running_loss / sum, (correct / sum) * 100
+
+        return running_loss / total_sum, (correct / total_sum) * 100
 
     def evaluate(self, dataloader):
         self.model.eval()
@@ -70,3 +70,4 @@ class Trainer:
         
         print("-" * 50)
         print("Training Complete!")
+        return train_loss, train_acc, val_loss, val_acc

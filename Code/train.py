@@ -27,7 +27,11 @@ def main():
     optimizer = optim.Adam(model.parameters(), lr=config["LEARNING_RATE"])
 
     trainer = Trainer(model, criterion, optimizer, device)
-    trainer.fit(train_loader, val_loader, epochs=config["EPOCHS"])
+    train_loss, train_acc, val_loss, val_acc = trainer.fit(train_loader, val_loader, epochs=config["EPOCHS"])
+    
+    model_save_path = f"./models/{config['MODEL']}_{config['DATA']}_model.pth"
+    torch.save(model.state_dict(), model_save_path)
+    print(f"Model saved to {model_save_path}")
 
 if __name__ == "__main__":
     main()
