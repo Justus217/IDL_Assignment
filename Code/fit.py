@@ -15,7 +15,7 @@ class Trainer:
     def train_one_epoch(self, dataloader):
         self.model.train()
         running_loss = 0.0
-        correct, sum = 0, 0
+        correct, total_sum = 0, 0
         
         for images, labels in dataloader:
             images, labels = images.to(self.device), labels.to(self.device)
@@ -31,7 +31,7 @@ class Trainer:
             
             running_loss += loss.item() * images.size(0)
             _, predicted = outputs.max(1)
-            sum += labels.size(0)
+            total_sum += labels.size(0)
             correct += predicted.eq(labels).sum().item()
             
         return running_loss / sum, (correct / sum) * 100
